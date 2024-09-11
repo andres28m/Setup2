@@ -4,29 +4,31 @@
 			<meta charset="UTF-8">
              <title>Crypto VIT Pro</title>
 <style>
-        .container {
-            display: flex;
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
+            grid-template-rows: repeat(2, 1fr);    /* Dos filas de igual altura */
             gap: 10px; /* Espacio entre los gráficos */
             padding: 10px; /* Espacio alrededor del contenedor */
+            height: 100vh; /* Altura completa de la ventana */
+            box-sizing: border-box; /* Incluye el padding en la altura total */
         }
         .tradingview-widget-container {
-            flex: 1; /* Hacer que cada gráfico ocupe el mismo espacio */
-            height: 480px; /* Altura fija para los gráficos */
-            min-width: 0; /* Evitar que los gráficos se salgan del contenedor */
+            width: 100%;
+            height: 100%;
         }
-</style>
+    </style>
 		</head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" rightmargin="0">
 <table width="100%" height="100%" border="1" cellpadding="0" cellspacing="0">
 
-	<div class="container">
+	<div class="grid-container">
         <!-- TradingView Widget 1 BEGIN -->
         <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
-                "width": "980",
-                "height": "610",
+                "autosize": true,
                 "symbol": "PIONEX:BTCUSDT.P",
                 "interval": "D",
                 "timezone": "Etc/UTC",
@@ -51,11 +53,10 @@
 
         <!-- TradingView Widget 2 BEGIN -->
         <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
-                "width": "980",
-                "height": "610",
+                "autosize": true,
                 "symbol": "PIONEX:BTCUSDT.P",
                 "interval": "D",
                 "timezone": "Etc/UTC",
@@ -77,42 +78,13 @@
             </script>
         </div>
         <!-- TradingView Widget 2 END -->
-		<!-- TradingView Widget 1 BEGIN -->
-        <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-            {
-                "width": "980",
-                "height": "610",
-                "symbol": "PIONEX:BTCUSDT.P",
-                "interval": "D",
-                "timezone": "Etc/UTC",
-                "theme": "dark",
-                "style": "3",
-                "locale": "es",
-                "gridColor": "rgba(255, 152, 0, 0.06)",
-                "allow_symbol_change": true,
-                "calendar": false,
-                "studies": [
-                    "STD;DEMA",
-                    "STD;MA%1Cross",
-                    "STD;MACD",
-                    "STD;EMA",
-                    "STD;SMA"
-                ],
-                "support_host": "https://www.tradingview.com"
-            }
-            </script>
-        </div>
-        <!-- TradingView Widget 1 END -->
 
-        <!-- TradingView Widget 2 BEGIN -->
+        <!-- TradingView Widget 3 BEGIN -->
         <div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
-                "width": "980",
-                "height": "610",
+                "autosize": true,
                 "symbol": "PIONEX:BTCUSDT.P",
                 "interval": "D",
                 "timezone": "Etc/UTC",
@@ -133,8 +105,36 @@
             }
             </script>
         </div>
-        <!-- TradingView Widget 2 END -->
-</div>
+        <!-- TradingView Widget 3 END -->
+
+        <!-- TradingView Widget 4 BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+            {
+                "autosize": true,
+                "symbol": "PIONEX:BTCUSDT.P",
+                "interval": "D",
+                "timezone": "Etc/UTC",
+                "theme": "dark",
+                "style": "3",
+                "locale": "es",
+                "gridColor": "rgba(255, 152, 0, 0.06)",
+                "allow_symbol_change": true,
+                "calendar": false,
+                "studies": [
+                    "STD;DEMA",
+                    "STD;MA%1Cross",
+                    "STD;MACD",
+                    "STD;EMA",
+                    "STD;SMA"
+                ],
+                "support_host": "https://www.tradingview.com"
+            }
+            </script>
+        </div>
+        <!-- TradingView Widget 4 END -->
+    </div>
 	<!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container" style="height:100%;width:100%">
   <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
