@@ -7,21 +7,69 @@
         /* Estilos para el contenedor grid */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
-            gap: 0px; /* Espacio entre los gráficos */
-            padding: 1px;
+            grid-template-columns: 1fr 1px 1fr; /* Dos columnas con un divisor central */
             height: 100vh; /* Altura completa de la ventana */
             box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+            position: relative; /* Para posicionar los botones en el contenedor */
         }
+
         /* Estilos para cada widget */
         .tradingview-widget-container {
-            width: 100%; /* Ancho completo del contenedor */
-            height: 100%; /* Altura completa del contenedor */
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
+        }
+
+        /* Estilos para el divisor central */
+        .divider {
+            width: 0px;
+            background-color: #444;
+        }
+
+        /* Evitar márgenes en body */
+        body {
+            margin: 0;
+            overflow: hidden; /* Evita el scroll */
+        }
+
+        /* Estilos para los botones */
+        .control-buttons {
+            position: absolute;
+            top: 50%; /* Centrado verticalmente */
+            transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+            left: 50%; /* Inicialmente centrado */
+            transform: translateX(-50%);
+        }
+
+        .control-buttons button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%; /* Hacer los botones circulares */
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .control-buttons button:hover {
+            background-color: #555;
+        }
+
+        /* Estilos para el icono de las flechas */
+        .arrow {
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="grid-container">
+    <div class="grid-container" id="gridContainer">
         <!-- Primer widget de TradingView -->
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
@@ -41,12 +89,15 @@
             </script>
         </div>
 
+        <!-- Divisor central -->
+        <div class="divider"></div>
+
         <!-- Segundo widget de TradingView -->
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
-            "width": "980",
+            "width": "100%",
             "height": "100%",
             "symbol": "PIONEX:BTCUSDT.P",
             "timezone": "Etc/UTC",
@@ -86,8 +137,6 @@
             "hotlist": true,
             "calendar": false,
             "studies": [
-                "STD;DEMA",
-                "STD;MA%1Cross",
                 "STD;SMA",
                 "STD;UP_DOWN_Volume"
             ],
@@ -95,6 +144,58 @@
             }
             </script>
         </div>
+
+        <!-- Botones para controlar el redimensionamiento -->
+        <div class="control-buttons" id="controlButtons">
+            <button id="resizeLeft"><span class="arrow">&larr;</span></button>
+            <button id="resizeRight"><span class="arrow">&rarr;</span></button>
+        </div>
     </div>
+
+    <script>
+        const gridContainer = document.getElementById('gridContainer');
+        const resizeLeftBtn = document.getElementById('resizeLeft');
+        const resizeRightBtn = document.getElementById('resizeRight');
+        const controlButtons = document.getElementById('controlButtons');
+
+        // Proporciones actuales de las columnas (iniciamos con 50% para cada una)
+        let leftColumnPercentage = 50;
+        let rightColumnPercentage = 50;
+
+        // Función para redimensionar hacia la izquierda
+        resizeLeftBtn.addEventListener('click', function() {
+            if (leftColumnPercentage < 80) {  // Evitar que crezca más del 80%
+                leftColumnPercentage += 10;  // Incrementar el tamaño de la columna izquierda
+                rightColumnPercentage -= 10; // Reducir la columna derecha
+                updateGrid();
+            }
+        });
+
+        // Función para redimensionar hacia la derecha
+        resizeRightBtn.addEventListener('click', function() {
+            if (rightColumnPercentage < 80) {  // Evitar que crezca más del 80%
+                rightColumnPercentage += 10;  // Incrementar el tamaño de la columna derecha
+                leftColumnPercentage -= 10;   // Reducir la columna izquierda
+                updateGrid();
+            }
+        });
+
+        // Actualizar las proporciones del grid y mover los botones
+        function updateGrid() {
+            gridContainer.style.gridTemplateColumns = `${leftColumnPercentage}% 10px ${rightColumnPercentage}%`;
+            moveButtons();
+        }
+
+        // Función para mover los botones con la división
+        function moveButtons() {
+            // Calcular la nueva posición de los botones según el porcentaje de la primera columna
+            const containerWidth = gridContainer.offsetWidth;
+            const leftColumnWidth = (leftColumnPercentage / 100) * containerWidth;
+            controlButtons.style.left = `${leftColumnWidth + 5}px`; // +5px para compensar el ancho del divisor
+        }
+
+        // Inicializar la posición de los botones
+        moveButtons();
+    </script>
 </body>
 </html>
