@@ -73,18 +73,52 @@
         <!-- Primer widget de TradingView -->
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
-            "interval": "1m",
             "width": "100%",
-            "isTransparent": false,
             "height": "100%",
-            "symbol": "PIONEX:BTCUSDT.P",
-            "showIntervalTabs": true,
-            "displayMode": "multiple",
-            "locale": "es",
-            "colorTheme": "dark",
-            "largeChartUrl": "https://andres28m.github.io/PionexGK/"
+            "symbol": "BINANCE:BTCUSDT",
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "range": "YTD",
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "watchlist": [
+                "BINANCE:BTCUSDT",
+                "BINANCE:ETHUSDT",
+                "BINANCE:SOLUSDT",
+                "BINANCE:MATICUSDT",
+                "BINANCE:WIFUSDT",
+                "BINANCE:DOTUSDT",
+                "BINANCE:DOGEUSDT",
+                "BINANCE:PEPEUSDT",
+                "BINANCE:ADAUSDT",
+                "BINANCE:TONUSDT",
+                "BINANCE:XRPUSDT",
+                "BINANCE:LTCUSDT",
+                "BINANCE:AAVEUSDT",
+                "BINANCE:SHIBUSDT",
+                "BINANCE:BNBUSDT",
+                "BINANCE:FTMUSDT",
+                "BINANCE:SUPERUSDT",
+                "BINANCE:LINKUSDT",
+                "BINANCE:XMRUSDT",
+                "BINANCE:UNIUSDT",
+                "BINANCE:TRXUSDT",
+                "BINANCE:FLOKIUSDT",
+                "BINANCE:DARUSDT",
+                "BINANCE:MKRUSDT"
+            ],
+            "details": true,
+            "hotlist": true,
+            "calendar": false,
+            "studies": [
+                "STD;SMA",
+                "STD;UP_DOWN_Volume"
+            ],
+            "support_host": "https://andres28m.github.io/PionexGK/"
             }
             </script>
         </div>
