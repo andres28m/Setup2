@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta juego de personas="UTF-8">
-    <título>Setup2</título>
+    <meta charset="UTF-8">
+    <title>Setup2</title>
     <style>
- /* Estilos para el contenedor grid */
- .contenedor-rojo {
- pantalla: cuadrícula;
- columnas-plantilla-cuadrícula: 1fr 1px 1fr; /* Dos columnas con un divisor central */
- altura: 100vh; /* Altura completa de la ventana */
- box size: caja fronteriza; /* Asegura que el padding se incluye en el tamaño total */
- posición: relativa; /* Para posición los botones en el contenedor */
+        /* Estilos para el contenedor grid */
+        .contenedor-rojo {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr; /* Dos columnas con un divisor central */
+            height: 100vh; /* Altura completa de la ventana */
+            box-sizing: border-box; /* Asegura que el padding se incluye en el tamaño total */
+            position: relative; /* Para posicionar los botones en el contenedor */
         }
 
- /* Widget Estilos para cada */
- .tradingview-widget-container {
- ancho: 100%;
- alta: 100%;
- desbordamiento: oculto;
- frontera: ninguno;
+        /* Widget Estilos para cada */
+        .tradingview-widget-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border: none;
         }
 
- /* Estilos para el divisor central */
- .divisor {
- ancho: 0px;
- color de fondo: #444;
+        /* Estilos para el divisor central */
+        .divisor {
+            width: 1px;
+            background-color: #444;
         }
 
- /* Evitar másgenes en cuerpo */
- body {
- margen: 0;
- desbordamiento: oculto; /* Evita el pérgamo */
+        /* Evitar márgenes en el cuerpo */
+        body {
+            margin: 0;
+            overflow: hidden; /* Evita el scroll */
         }
 
- /* Estilos para los botones */
- .botones de control {
- posición: absoluta;
- arriba: 50%; /* Centrado verticalmente */
- transformar: traducirY(-50%);
- display: flex;
- gap: 10px;
- izquierda: 50%; /*Inicialmente centrado */
- transformar: traducirX(-50%);
+        /* Estilos para los botones */
+        .control-buttons {
+            position: absolute;
+            top: 50%; /* Centrado verticalmente */
+            transform: translateY(-50%);
+            display: flex;
+            gap: 10px;
+            left: 50%; /* Inicialmente centrado */
+            transform: translateX(-50%);
         }
 
- .botones de control botón {
- width: 30px;
- alta: 30px;
- radio de borde: 50%; /* Hacer los botones circulares */
- font-size: 16px;
- background-color: #333;
- color: alb;
- borde: none;
- cursor: puntero;
- display: flex;
- justify-content: center;
- align-items: center;
+        .control-buttons button {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%; /* Hacer los botones circulares */
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
- Botón.botones de control:hover {
+        .control-buttons button:hover {
             background-color: #555;
         }
 
@@ -69,7 +69,7 @@
     </style>
 </head>
 <body>
-    <div class="grid-container" id="gridContainer">
+    <div class="contenedor-rojo" id="gridContainer">
         <!-- Primer widget de TradingView -->
         <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
@@ -124,7 +124,7 @@
         </div>
 
         <!-- Divisor central -->
-        <div class="divider"></div>
+        <div class="divisor"></div>
 
         <!-- Segundo widget de TradingView -->
         <div class="tradingview-widget-container">
@@ -217,7 +217,7 @@
 
         // Actualizar las proporciones del grid y mover los botones
         function updateGrid() {
-            gridContainer.style.gridTemplateColumns = `${leftColumnPercentage}% 10px ${rightColumnPercentage}%`;
+            gridContainer.style.gridTemplateColumns = `${leftColumnPercentage}% 1px ${rightColumnPercentage}%`;
             moveButtons();
         }
 
@@ -234,3 +234,4 @@
     </script>
 </body>
 </html>
+
