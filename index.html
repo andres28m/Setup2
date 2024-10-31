@@ -68,6 +68,13 @@
         .arrow {
             font-size: 20px;
         }
+
+        .contenedor-scroll {
+    width: 100%; /* Ancho fijo */
+    height: 100vh; /* Alto fijo */
+    overflow-y: auto; /* Habilita el scroll solo en el eje Y (vertical) */
+    overflow-x: hidden; /* Opcional: oculta el scroll horizontal */
+}
     </style>
 
     <style>
@@ -170,7 +177,8 @@
 <body>
     <div class="contenedor-rojo" id="gridContainer">
         <!-- Primer widget de TradingView -->
-        <div class="tradingview-widget-container">
+        <div class="contenedor-scroll">
+            <div class="tradingview-widget-container">
             <div class="tradingview-widget-container__widget"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
@@ -220,7 +228,7 @@
             }
             </script>
         </div>
-
+</div>
         <!-- Divisor central -->
         <div class="divisor"></div>
         
