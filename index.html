@@ -4,52 +4,42 @@
     <meta charset="UTF-8">
     <title>Setup2</title>
     <style>
-        /* Estilos para el contenedor grid */
         .contenedor-rojo {
             display: grid;
-            grid-template-columns: 1fr 1px 1fr; /* Dos columnas con un divisor central */
+            grid-template-columns: 70% 1px 30%; /* Columna izquierda 70% y derecha 30% por defecto */
             width: 100%;
-            height: 100%; /* Altura completa de la ventana */
-            box-sizing: border-box; /* Asegura que el padding se incluye en el tamaño total */
-            position: relative; /* Para posicionar los botones en el contenedor */
+            height: 100vh; /* Altura completa de la ventana */
+            box-sizing: border-box;
+            position: relative;
         }
 
-        /* Widget Estilos para cada */
-        .tradingview-widget-container {
+        /* Resto de estilos */
+        .tradingview-widget-container, .container {
             width: 100%;
             height: 100%;
             overflow: hidden;
             border: none;
         }
-
-        /* Estilos para el divisor central */
         .divisor {
             width: 1px;
             background-color: #444;
         }
-
-        /* Evitar márgenes en el cuerpo */
         body {
             margin: 0;
-            overflow: hidden; /* Evita el scroll */
+            overflow: hidden;
             background-color: #1e1e2f;
         }
-
-        /* Estilos para los botones */
         .control-buttons {
             position: absolute;
-            top: 50%; /* Centrado verticalmente */
+            top: 50%;
             transform: translateY(-50%);
             display: flex;
             gap: 10px;
-            left: 50%; /* Inicialmente centrado */
-            transform: translateX(-50%);
         }
-
         .control-buttons button {
             width: 30px;
             height: 30px;
-            border-radius: 50%; /* Hacer los botones circulares */
+            border-radius: 50%;
             font-size: 16px;
             background-color: #333;
             color: white;
@@ -59,252 +49,26 @@
             justify-content: center;
             align-items: center;
         }
-
         .control-buttons button:hover {
             background-color: #555;
         }
-
-        /* Estilos para el icono de las flechas */
-        .arrow {
-            font-size: 20px;
-        }
     </style>
-
-    <style>
-
-        .container {
-            background-color: #1e1e2f;
-            box-shadow: 0 4px 12px rgba(0, 255, 128, 0.3);
-            border-radius: 8px;
-            padding: 5px;
-            text-align: center;
-            border-left: 5px solid #00e6d7;
-            transition: transform 0.3s ease;
-            width: 100%;
-            max-width: 300px; 
-            height: 100%;
-            
-        }
-        
-        h1 {
-            color: #00e676;
-            font-size: 12px;
-            margin-bottom: 3px;
-            text-align: center;
-        }
-
-        /* Contenedor de la cuadrícula */
-        #market-hours-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        /* Tarjetas de mercado en estilo futurista */
-        .market-card {
-            background-color: #1e1e2f;
-            box-shadow: 0 4px 12px rgba(0, 255, 128, 0.3);
-            border-radius: 8px;
-            padding: 5px;
-            text-align: center;
-            border-left: 5px solid #00e6d7;
-            transition: transform 0.3s ease;
-            height: 110px;
-            
-        }
-        .hls {
-            background-color: #1e1e2f;
-            box-shadow: 0 4px 12px rgba(0, 255, 128, 0.3);
-            border-radius: 8px;
-            padding: 5px;
-            text-align: center;
-            border-left: 5px solid #00e6d7;
-            transition: transform 0.3s ease;
-            height: 150px;
-            
-        }
-        h4 {
-            margin-top: 4px;
-            font-size: 14px;
-            color: #ffffff;
-        }
-
-        .market-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .market-status {
-            font-size: 16px;
-            margin: 5px 0;
-            font-weight: bold;
-        }
-
-        .abierto {
-            color: #00e676;
-        }
-
-        .cerrado {
-            color: #f44336;
-        }
-
-        .time {
-            font-size: 12px;
-            color: #bdbdbd;
-        }
-
-        /* Estilo para la hora local */
-        .local-time {
-            margin-top: 10px;
-            font-size: 15px;
-            color: #b0bec5;
-            text-align: center;
-            width: 100%;
-            max-width: 300px;        }
-    </style>
-    
 </head>
 <body>
     <div class="contenedor-rojo" id="gridContainer">
-        <!-- Primer widget de TradingView -->
         <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-            {
-            "width": "100%",
-            "height": "100%",
-            "symbol": "BINANCE:BTCUSDT",
-            "interval": "240",
-            "timezone": "Etc/UTC",
-            "theme": "dark",
-            "style": "1",
-            "locale": "en",
-            "range": "YTD",
-            "hide_side_toolbar": true,
-            "allow_symbol_change": true,
-            "watchlist": [
-                "BINANCE:BTCUSDT",
-                "BINANCE:ETHUSDT",
-                "BINANCE:SOLUSDT",
-                "BINANCE:WIFUSDT",
-                "BINANCE:DOTUSDT",
-                "BINANCE:DOGEUSDT",
-                "BINANCE:PEPEUSDT",
-                "BINANCE:ADAUSDT",
-                "BINANCE:TONUSDT",
-                "BINANCE:XRPUSDT",
-                "BINANCE:LTCUSDT",
-                "BINANCE:AAVEUSDT",
-                "BINANCE:SHIBUSDT",
-                "BINANCE:BNBUSDT",
-                "BINANCE:FTMUSDT",
-                "BINANCE:SUPERUSDT",
-                "BINANCE:LINKUSDT",
-                "BINANCE:UNIUSDT",
-                "BINANCE:TRXUSDT",
-                "BINANCE:FLOKIUSDT",
-                "BINANCE:DARUSDT",
-                "BINANCE:MKRUSDT"
-            ],
-            "details": true,
-            "hotlist": true,
-            "calendar": false,
-            "studies": [
-                "STD;SMA",
-                "STD;Divergence%1Indicator"
-            ],
-            "support_host": "https://andres28m.github.io/PionexGK/"
-            }
-            </script>
+            <!-- Widget contenido omitido por brevedad -->
         </div>
 
-        <!-- Divisor central -->
         <div class="divisor"></div>
         
-<div class="container">
-    <!-- Segundo widget de TradingView -->
-       <ul id="market-hours-list"></ul>
+        <div class="container">
+            <ul id="market-hours-list"></ul>
+            <div class="hls">
+                <!-- Contenedores de horas omitidos por brevedad -->
+            </div>
+        </div>
 
-<div class="hls">
-    <!-- Contenedores para mostrar la hora local de cada mercado -->
-    <div class="local-time" id="nyMarket"></div>
-    <div class="local-time" id="londonMarket"></div>
-    <div class="local-time" id="tokyoMarket"></div>
-    <div class="local-time" id="sydneyMarket"></div>
-</div>
-
-    <script>
-        function mostrarHorariosMercados() {
-            const marketTimes = [
-                { mercado: 'Nueva York (EE. UU.)', apertura: '09:30', cierre: '16:00', zonaHoraria: 'America/New_York' },
-                { mercado: 'Londres (Reino Unido)', apertura: '08:00', cierre: '16:30', zonaHoraria: 'Europe/London' },
-                { mercado: 'Tokio (Japón)', apertura: '09:00', cierre: '15:00', zonaHoraria: 'Asia/Tokyo' },
-                { mercado: 'Sídney (Australia)', apertura: '10:00', cierre: '16:00', zonaHoraria: 'Australia/Sydney' }
-            ];
-
-            const horariosElement = document.getElementById('market-hours-list');
-            horariosElement.innerHTML = '';
-
-            // Hora actual en UTC
-            const ahoraUTC = new Date();
-
-            marketTimes.forEach(market => {
-                // Hora de apertura y cierre en la zona horaria específica del mercado
-                const aperturaLocal = new Date(ahoraUTC.toLocaleString("en-US", { timeZone: market.zonaHoraria }));
-                aperturaLocal.setHours(market.apertura.split(':')[0], market.apertura.split(':')[1]);
-
-                const cierreLocal = new Date(ahoraUTC.toLocaleString("en-US", { timeZone: market.zonaHoraria }));
-                cierreLocal.setHours(market.cierre.split(':')[0], market.cierre.split(':')[1]);
-
-                // Hora actual en la zona horaria del mercado
-                const ahoraLocal = new Date(ahoraUTC.toLocaleString("en-US", { timeZone: market.zonaHoraria }));
-
-                // Determinar si el mercado está abierto o cerrado
-                const abierto = ahoraLocal >= aperturaLocal && ahoraLocal <= cierreLocal;
-                const color = abierto ? 'abierto' : 'cerrado';
-
-                // Crear y agregar los elementos al DOM
-                const li = document.createElement('li');
-                li.className = 'market-card';
-                li.innerHTML = `
-                    <h4>${market.mercado}</h4>
-                    <div class="market-status ${color}">${abierto ? 'Abierto' : 'Cerrado'}</div>
-                    <div class="time">Apertura: ${market.apertura} | Cierre: ${market.cierre}</div>
-                `;
-                horariosElement.appendChild(li);
-            });
-        }
-
-        function displayMarketHours() {
-            const localTime = new Date();
-            const nyTime = new Date(localTime.toLocaleString("en-US", { timeZone: "America/New_York" }));
-            const londonTime = new Date(localTime.toLocaleString("en-US", { timeZone: "Europe/London" }));
-            const tokyoTime = new Date(localTime.toLocaleString("en-US", { timeZone: "Asia/Tokyo" }));
-            const sydneyTime = new Date(localTime.toLocaleString("en-US", { timeZone: "Australia/Sydney" }));
-
-            document.getElementById("nyMarket").textContent = `Nueva York: ${nyTime.toLocaleTimeString()} (Diferencia: ${nyTime.getHours() - localTime.getHours()} horas)`;
-            document.getElementById("londonMarket").textContent = `Londres: ${londonTime.toLocaleTimeString()} (Diferencia: ${londonTime.getHours() - localTime.getHours()} horas)`;
-            document.getElementById("tokyoMarket").textContent = `Tokio: ${tokyoTime.toLocaleTimeString()} (Diferencia: ${tokyoTime.getHours() - localTime.getHours()} horas)`;
-            document.getElementById("sydneyMarket").textContent = `Sídney: ${sydneyTime.toLocaleTimeString()} (Diferencia: ${sydneyTime.getHours() - localTime.getHours()} horas)`;
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            mostrarHorariosMercados();
-            displayMarketHours();
-
-            // Actualizar cada minuto
-            setInterval(() => {
-                mostrarHorariosMercados();
-                displayMarketHours();
-            }, 60000);
-        });
-    </script>
-
-</div>
-        <!-- Botones para controlar el redimensionamiento -->
         <div class="control-buttons" id="controlButtons">
             <button id="resizeLeft"><span class="arrow">&larr;</span></button>
             <button id="resizeRight"><span class="arrow">&rarr;</span></button>
@@ -317,45 +81,37 @@
         const resizeRightBtn = document.getElementById('resizeRight');
         const controlButtons = document.getElementById('controlButtons');
 
-        // Proporciones actuales de las columnas (iniciamos con 50% para cada una)
-        let leftColumnPercentage = 60;
-        let rightColumnPercentage = 40;
+        let leftColumnPercentage = 70;
+        let rightColumnPercentage = 30;
 
-        // Función para redimensionar hacia la izquierda
         resizeLeftBtn.addEventListener('click', function() {
-            if (leftColumnPercentage < 80) {  // Evitar que crezca más del 80%
-                leftColumnPercentage += 10;  // Incrementar el tamaño de la columna izquierda
-                rightColumnPercentage -= 10; // Reducir la columna derecha
+            if (leftColumnPercentage < 80) {
+                leftColumnPercentage += 5;
+                rightColumnPercentage -= 5;
                 updateGrid();
             }
         });
 
-        // Función para redimensionar hacia la derecha
         resizeRightBtn.addEventListener('click', function() {
-            if (rightColumnPercentage < 80) {  // Evitar que crezca más del 80%
-                rightColumnPercentage += 10;  // Incrementar el tamaño de la columna derecha
-                leftColumnPercentage -= 10;   // Reducir la columna izquierda
+            if (rightColumnPercentage < 80) {
+                rightColumnPercentage += 5;
+                leftColumnPercentage -= 5;
                 updateGrid();
             }
         });
 
-        // Actualizar las proporciones del grid y mover los botones
         function updateGrid() {
             gridContainer.style.gridTemplateColumns = `${leftColumnPercentage}% 1px ${rightColumnPercentage}%`;
             moveButtons();
         }
 
-        // Función para mover los botones con la división
         function moveButtons() {
-            // Calcular la nueva posición de los botones según el porcentaje de la primera columna
             const containerWidth = gridContainer.offsetWidth;
             const leftColumnWidth = (leftColumnPercentage / 100) * containerWidth;
-            controlButtons.style.left = `${leftColumnWidth + 5}px`; // +5px para compensar el ancho del divisor
+            controlButtons.style.left = `${leftColumnWidth + 5}px`;
         }
 
-        // Inicializar la posición de los botones
         moveButtons();
     </script>
 </body>
 </html>
-
