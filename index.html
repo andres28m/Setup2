@@ -6,19 +6,18 @@
     <style>
         .contenedor-rojo {
             display: grid;
-            grid-template-columns: 70% 1px 30%; /* Columna izquierda 70% y derecha 30% por defecto */
+            grid-template-columns: 70% 1px 30%;
             width: 100%;
-            height: 100vh; /* Altura completa de la ventana */
+            height: 100vh;
             box-sizing: border-box;
             position: relative;
         }
-
-        /* Resto de estilos */
         .tradingview-widget-container, .container {
             width: 100%;
             height: 100%;
             overflow: hidden;
             border: none;
+            text-align: center; /* Temporal para centrar texto */
         }
         .divisor {
             width: 1px;
@@ -57,15 +56,20 @@
 <body>
     <div class="contenedor-rojo" id="gridContainer">
         <div class="tradingview-widget-container">
-            <!-- Widget contenido omitido por brevedad -->
+            <h1>Contenido TradingView Aquí</h1> <!-- Temporal para verificar visibilidad -->
+            <!-- Añadir aquí el contenido del widget de TradingView -->
         </div>
 
         <div class="divisor"></div>
         
         <div class="container">
+            <h1>Contenido de mercado</h1> <!-- Temporal para verificar visibilidad -->
             <ul id="market-hours-list"></ul>
             <div class="hls">
-                <!-- Contenedores de horas omitidos por brevedad -->
+                <div class="local-time" id="nyMarket"></div>
+                <div class="local-time" id="londonMarket"></div>
+                <div class="local-time" id="tokyoMarket"></div>
+                <div class="local-time" id="sydneyMarket"></div>
             </div>
         </div>
 
@@ -112,6 +116,19 @@
         }
 
         moveButtons();
+
+        // Mostrar horarios de mercados de prueba
+        function mostrarHorariosMercados() {
+            const horariosElement = document.getElementById('market-hours-list');
+            if (horariosElement) {
+                horariosElement.innerHTML = `
+                    <li>Ejemplo de mercado 1 - Abierto</li>
+                    <li>Ejemplo de mercado 2 - Cerrado</li>
+                `;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", mostrarHorariosMercados);
     </script>
 </body>
 </html>
