@@ -31,6 +31,7 @@
         body {
             margin: 0;
             overflow: hidden; /* Evita el scroll */
+            background-color: #1e1e2f;
         }
 
         /* Estilos para los botones */
@@ -316,8 +317,8 @@
         const controlButtons = document.getElementById('controlButtons');
 
         // Proporciones actuales de las columnas (iniciamos con 50% para cada una)
-        let leftColumnPercentage = 50;
-        let rightColumnPercentage = 50;
+        let leftColumnPercentage = 70;
+        let rightColumnPercentage = 30;
 
         // Función para redimensionar hacia la izquierda
         resizeLeftBtn.addEventListener('click', function() {
