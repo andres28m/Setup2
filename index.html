@@ -1,68 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Páginas en Frames Redimensionables</title>
-  <style>
-/* Evitar márgenes en el cuerpo */
-body {
-    margin: 0;
-    overflow: hidden; /* Evita el scroll */
-    background-color: #1e1e2f;
-}
+    <meta charset="UTF-8">
+    <title>Setup2</title>
+    <style>
+        /* Estilos para el contenedor grid */
+        .contenedor-rojo {
+            display: grid;
+            grid-template-columns: 1fr 1px 1fr; /* Dos columnas con un divisor central */
+             /* Altura completa de la ventana */
+            box-sizing: border-box; /* Asegura que el padding se incluye en el tamaño total */
+            position: relative; /* Para posicionar los botones en el contenedor */
+        }
 
-    /* Contenedor de los frames */
-    .frame-container {
-      display: flex;
-      justify-content: center;
-      gap: 2px;
-      padding: 1px;
-    }
 
-    /* Contenedor redimensionable de cada iframe */
-    .resizable-frame {
-      border: 2px solid #000; /* Borde negro */
-      resize: horizontal; /* Permite redimensionar horizontalmente */
-      overflow: auto; /* Para que el contenido no se desborde */
-      width: 100%;
-      max-width: 800px; /* Ancho máximo */
-      min-width: 150px; /* Ancho mínimo */
-      height: 430px; /* Altura fija */
-    }
+    </style>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Estilo del iframe para que ocupe todo el contenedor */
-    .resizable-frame iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #00172b;
+            padding: 5px;
+        }
 
-    /* Adaptación a dispositivos móviles */
-    @media (max-width: 800px) {
-      .frame-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .resizable-frame {
-        max-width: 100%; /* Ancho completo en móviles */
-      }
-    }
-  </style>
+        /* Encabezado */
+        header {
+            width: 100%;
+            max-width: 100%;
+            text-align: center;
+            padding: 5px;
+            background-color: #333;
+            color: rgb(41, 40, 40);
+        }
+
+        /* Estilo de frames */
+        .frames {
+            display: flex;
+            gap: 1px;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 1px;
+        }
+
+        .frame {
+            flex: 1 1 300px;
+            width: 430px;
+            height: 430px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        
+    </style>
+  
+    
 </head>
 <body>
+        <!-- Sección de frames -->
+        <section class="frames">
+            <div class="contenedor-rojo" id="gridContainer">
+        
+        
+                <iframe src="https://andres28m.github.io/trade-info-binance-mini/" class="frame" title="Frame 1"></iframe>
+        
+                <!-- Divisor central -->
+                <div class="divisor"></div>
+        
+                <iframe src="https://andres28m.github.io/horariosmarker/" class="frame" title="Frame 2"></iframe>
+        
+            </div>
+        </section>
+    
 
-  <div class="frame-container">
-    <!-- Contenedor redimensionable que contiene el iframe -->
-    <div class="resizable-frame">
-      <iframe src="https://andres28m.github.io/trade-info-binance/" title="Página 1"></iframe>
-    </div>
 
-    <!-- Otro contenedor redimensionable para el segundo iframe -->
-    <div class="resizable-frame">
-      <iframe src="https://andres28m.github.io/horariosmarker/" title="Página 2"></iframe>
-    </div>
-  </div>
-
+        
 </body>
 </html>
